@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="cambridge_dictionary">Cambridge Dictionary</string>
+    <string name="cambridge_dictionary">English Dictionary</string>
     <string name="search_hint">Nhập từ để tra</string>
     <string name="pronounce_us_title">US</string>
     <string name="pronounce_uk_title">UK</string>
