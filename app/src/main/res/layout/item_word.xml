@@ -9,19 +9,6 @@
     android:paddingHorizontal="6dp"
     android:paddingTop="6dp">
 
-    <TextView
-        android:id="@+id/tvCategory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
-        android:background="@color/background_yellow"
-        android:letterSpacing="0.08"
-        android:paddingHorizontal="8dp"
-        android:paddingVertical="4dp"
-        android:textColor="@color/dark_blue"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        tools:text="Beautiful | American" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -50,35 +37,6 @@
             android:textSize="16sp"
             android:textStyle="italic"
             tools:text="exclammation" />
-
-        <TextView
-            android:id="@+id/tvInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/tvGrammar"
-            android:layout_alignTop="@id/tvGrammar"
-            android:layout_alignBottom="@+id/tvGrammar"
-            android:gravity="center"
-            android:layout_marginHorizontal="6dp"
-            android:textColor="@color/light_blue"
-            android:ellipsize="marquee"
-            android:textSize="16sp"
-            android:textStyle="italic"
-
-            tools:text="(also mainly UK hallo)" />
-
-        <TextView
-            android:id="@+id/tvInfl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvGrammar"
-            android:layout_alignStart="@id/tvGrammar"
-            android:layout_marginTop="2dp"
-            android:maxLines="1"
-            android:textColor="@color/light_blue"
-            android:textSize="16sp"
-            android:textStyle="italic"
-            tools:text="plural hellos" />
 
         <TextView
             android:id="@+id/tvPronounceUSTitle"

@@ -9,16 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.models.Meaning;
+import com.example.myapplication.models_new.Definition;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MeaningAdapter extends RecyclerView.Adapter<MeaningAdapter.MeaningViewHolder> {
-    private final List<Meaning> listMeaning;
+    private final List<Definition> listMeaning;
 
-    public MeaningAdapter(List<Meaning> listMeaning) {
-        this.listMeaning = listMeaning == null ? new ArrayList<>() : listMeaning;
+    public MeaningAdapter(List<Definition> definitions) {
+        this.listMeaning = definitions == null ? new ArrayList<>() : definitions;
     }
 
     @NonNull
@@ -31,8 +31,8 @@ public class MeaningAdapter extends RecyclerView.Adapter<MeaningAdapter.MeaningV
     @Override
     public void onBindViewHolder(@NonNull MeaningViewHolder holder, int position) {
         if (position < listMeaning.size()) {
-            Meaning meaning = listMeaning.get(position);
-            if (meaning != null) holder.binData(meaning);
+            Definition definition = listMeaning.get(position);
+            if (definition != null) holder.binData(definition);
         }
     }
 
@@ -51,10 +51,11 @@ public class MeaningAdapter extends RecyclerView.Adapter<MeaningAdapter.MeaningV
             rcvExamples = itemView.findViewById(R.id.rcvExamples);
         }
 
-        public void binData(@NonNull Meaning meaning) {
-            tvMeaning.setText(meaning.getMeaning());
-
-            ExampleAdapter exampleAdapter = new ExampleAdapter(meaning.getExamples());
+        public void binData(@NonNull Definition definition) {
+            tvMeaning.setText(definition.getDefinition());
+            List<String> list = new ArrayList<String>();
+            list.add(definition.getExample());
+            ExampleAdapter exampleAdapter = new ExampleAdapter(list);
             rcvExamples.setAdapter(exampleAdapter);
             exampleAdapter.notifyDataSetChanged();
         }

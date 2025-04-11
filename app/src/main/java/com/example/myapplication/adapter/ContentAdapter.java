@@ -9,16 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.models.Content;
-import com.example.myapplication.models.Word;
+import com.example.myapplication.models_new.Meaning;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentViewHolder> {
-    private final List<Content> listContent;
+    private final List<Meaning> listContent;
 
-    public ContentAdapter(List<Content> listContent) {
+    public ContentAdapter(List<Meaning> listContent) {
         this.listContent = listContent == null ? new ArrayList<>() : listContent;
     }
 
@@ -32,8 +31,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
     @Override
     public void onBindViewHolder(@NonNull ContentViewHolder holder, int position) {
         if (position < listContent.size()) {
-            Content content = listContent.get(position);
-            if (content != null) holder.binData(content);
+            Meaning meaning = listContent.get(position);
+            if (meaning != null) holder.binData(meaning);
         }
     }
 
@@ -52,9 +51,9 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
             rcvMeanings = itemView.findViewById(R.id.rcvMeanings);
         }
 
-        public void binData(@NonNull Content content) {
-            tvGuideWord.setText(content.getGuideWord());
-            MeaningAdapter meaningAdapter = new MeaningAdapter(content.getMeanings());
+        public void binData(@NonNull Meaning meaning) {
+            tvGuideWord.setText(meaning.getPartOfSpeech());
+            MeaningAdapter meaningAdapter = new MeaningAdapter(meaning.getDefinitions());
             rcvMeanings.setAdapter(meaningAdapter);
             meaningAdapter.notifyDataSetChanged();
         }

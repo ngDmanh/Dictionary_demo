@@ -1,10 +1,6 @@
 package com.example.myapplication;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -14,19 +10,12 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.adapter.WordAdapter;
 import com.example.myapplication.api.CambridgeAPIClient;
 import com.example.myapplication.api.CambridgeService;
-import com.example.myapplication.models.CambridgeResponse;
-import com.example.myapplication.models.Word;
-import com.google.gson.Gson;
+import com.example.myapplication.models_new.Word;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +25,7 @@ import retrofit2.Callback;
 
 public class MainActivity extends AppCompatActivity {
     private CambridgeService cambridgeService;
-    private TextView tvTitle,tvSuggest;
+    private TextView tvTitle;
     private ImageButton ibFind;
     private EditText etWrite;
     private ImageButton ibClose;
@@ -58,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         etWrite = findViewById(R.id.etWrite);
         ibClose = findViewById(R.id.ibClose);
         rcvWords = findViewById(R.id.rcvWords);
-
 
         ibFind.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,28 +72,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void searchByKeyword(String keyword) {
-        Call<CambridgeResponse> call = cambridgeService.searchByKeyword(keyword);
-        call.enqueue(new Callback<CambridgeResponse>() {
+        Call<Word> call = cambridgeService.searchByKeyword(keyword);
+        call.enqueue(new Callback<Word>() {
+
             @Override
-            public void onResponse(@NonNull Call<CambridgeResponse> call, @NonNull retrofit2.Response<CambridgeResponse> response) {
-                CambridgeResponse cambridgeResponse = response.body();
-                List<Word> listWord = cambridgeResponse != null && cambridgeResponse.getStatus() ? cambridgeResponse.getData() : new ArrayList<>();
-                if (!listWord.isEmpty()) {
-                    displayWords(listWord);
+            public void onResponse(@NonNull Call<Word> call, @NonNull retrofit2.Response<Word> response) {
+                Word word = response.body();
+                if (word != null) {
+                    displayWords(word);
                 } else {
                     Toast.makeText(MainActivity.this, "Call api error", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<CambridgeResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<Word> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Call api error", Toast.LENGTH_SHORT).show();
                 call.cancel();
             }
         });
     }
 
-    void displayWords(List<Word> listWord) {
+    void displayWords(Word word) {
+        List<Word> listWord = new ArrayList<>();
+        listWord.add(word);
         if (wordAdapter != null) {
             wordAdapter.setListWord(listWord);
             wordAdapter.notifyDataSetChanged();

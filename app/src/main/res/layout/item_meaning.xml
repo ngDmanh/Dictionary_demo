@@ -13,22 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@id/tvInfo"
         android:textSize="18sp"
         android:textStyle="bold"
         tools:text="an area planted with grass, esp. for use by the public:" />
-
-    <TextView
-        android:id="@+id/tvInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:paddingHorizontal="16dp"
-        android:textColor="@color/light_blue"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        tools:text="A1" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvExamples"

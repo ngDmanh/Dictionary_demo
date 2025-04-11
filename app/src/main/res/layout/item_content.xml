@@ -29,7 +29,7 @@
             android:orientation="vertical"
             android:paddingHorizontal="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="1"
+            tools:itemCount="2"
             tools:listitem="@layout/item_meaning" />
     </LinearLayout>
 </android.support.v7.widget.CardView>
