@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingHorizontal="6dp"
+    android:paddingTop="6dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_gray"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:textColor="@color/dark_blue"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="Beautiful" />
+
+        <TextView
+            android:id="@+id/tvGrammar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/tvTitle"
+            android:layout_below="@id/tvTitle"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/dark_blue"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            tools:text="exclammation" />
+
+        <TextView
+            android:id="@+id/tvPronounceUSTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/tvPronounceUS"
+            android:layout_alignBottom="@id/tvPronounceUS"
+            android:layout_marginEnd="6dp"
+            android:layout_toStartOf="@id/tvPronounceUS"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:text="@string/pronounce_us_title"
+            android:textColor="@color/dark_blue"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:drawableEndCompat="@drawable/ic_sound"
+            app:drawableTint="@color/dark_blue" />
+
+        <TextView
+            android:id="@+id/tvPronounceUS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:ellipsize="end"
+            android:maxWidth="110dp"
+            android:textColor="@color/dark_blue"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            tools:text="/ˈbjuː.t̬ə.fəl/" />
+
+        <TextView
+            android:id="@+id/tvPronounceUKTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/tvPronounceUK"
+            android:layout_alignBottom="@id/tvPronounceUK"
+            android:layout_marginEnd="6dp"
+            android:layout_toStartOf="@id/tvPronounceUK"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:text="@string/pronounce_uk_title"
+            android:textColor="@color/dark_blue"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:drawableEndCompat="@drawable/ic_sound"
+            app:drawableTint="@color/dark_blue" />
+
+        <TextView
+            android:id="@+id/tvPronounceUK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPronounceUS"
+            android:layout_alignParentEnd="true"
+            android:ellipsize="end"
+            android:maxWidth="110dp"
+            android:textColor="@color/dark_blue"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            tools:text="/ˈbjuː.t̬ə.fəl/" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvContents"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/background_gray"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_content"
+        tools:itemCount="30"/>
+</LinearLayout>

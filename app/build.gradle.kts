@@ -29,6 +29,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    packagingOptions {
+        exclude ("META-INF/*");
+    }
 }
 
 dependencies {
@@ -40,4 +43,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    implementation (libs.gson)
+    // Retrofit
+    implementation(libs.retrofit)
+    // Retrofit with Gson Converter
+    implementation(libs.converter.gson)
+    implementation(libs.cardview.v7)
+    implementation(libs.recyclerview)
 }
